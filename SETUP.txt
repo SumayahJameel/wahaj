@@ -1,0 +1,12 @@
+QuoteIt - local setup
+1. Open this folder in VS Code.
+2. Run: composer install
+3. Copy .env.example to .env (if .env does not exist).
+4. Run: php artisan key:generate
+5. Run: npm install
+6. Run: php artisan migrate
+7. Terminal 1: php artisan serve
+8. Terminal 2: npm run dev
+9. Open http://127.0.0.1:8000
+
+The project uses SQLite by default. This clean copy excludes .env secrets, vendor, node_modules, and the old database.
