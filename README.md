@@ -4,7 +4,7 @@
 
 > وَهَج: اتّقاد النار وتوهّجها — وكل اقتباس هنا وَهَجٌ من نور.
 
-**Live demo:** https://YOUR-ACCOUNT.alwaysdata.net
+**Live demo:** https://wahaj.alwaysdata.net
 
 Final project for the Al-Qimmah Bootcamp · Programming & Development Track (Tuwaiq Academy × Umm Al-Qura University), 2026. The project started from the provided *QuoteIt* starter and was rebuilt with its own identity.
 
@@ -29,55 +29,6 @@ Final project for the Al-Qimmah Bootcamp · Programming & Development Track (Tuw
 ## Database
 
 Three tables: `users`, `quotes`, and the `likes` pivot table (many-to-many between users and quotes). A user has many quotes; deleting a user deletes their quotes and likes, and deleting a quote deletes its likes. A unique `(user_id, quote_id)` pair stops double likes.
-
-## Run it locally
-
-Requirements: PHP 8.4+, Composer, Node.js 20+.
-
-```bash
-composer install
-cp .env.example .env
-php artisan key:generate
-touch database/database.sqlite
-php artisan migrate --seed
-npm install
-npm run build
-php artisan serve
-```
-
-Open http://127.0.0.1:8000. For development with hot reload, run `npm run dev` in a second terminal.
-
-The seeder adds demo accounts with quotes and likes. Every demo account uses the password `password123`, for example `sara@wahaj.test`.
-
-## Tests
-
-```bash
-php artisan test
-```
-
-## Deploying to alwaysdata
-
-1. Create an alwaysdata account and set **Environment → PHP** to 8.4 or newer.
-2. In **Remote access → SSH**, allow password login, then connect: `ssh ACCOUNT@ssh-ACCOUNT.alwaysdata.net`.
-3. Clone and install:
-
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/wahaj.git ~/wahaj
-   cd ~/wahaj
-   composer install --no-dev --optimize-autoloader
-   npm ci && npm run build
-   cp .env.example .env
-   php artisan key:generate
+rtisan view:cache
    ```
 
-4. In `.env` set `APP_NAME=Wahaj`, `APP_ENV=production`, `APP_DEBUG=false`, and `APP_URL=https://ACCOUNT.alwaysdata.net`.
-5. Create the database and cache the configuration:
-
-   ```bash
-   touch database/database.sqlite
-   php artisan migrate --force --seed
-   php artisan config:cache
-   php artisan view:cache
-   ```
-
-6. In **Web → Sites**, edit the site: type **PHP**, root directory `/wahaj/public`, then save.
